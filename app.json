@@ -1,0 +1,84 @@
+{
+  "expo": {
+    "name": "Datos",
+    "slug": "Datos",
+    "version": "5.5",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "com.datos.app",
+    "userInterfaceStyle": "automatic",
+    "notification": {
+      "icon": "./assets/images/icon.png"
+    },
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.datos.app",
+      "buildNumber": "5.5",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.333344526493-758rthpn9ucdmqquhf5g1184galaosvk"
+        }
+      },
+      "usesAppleSignIn": true,
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true,
+        "NSCameraUsageDescription": "We need to use your camera to be able to set your profile picture, scan QR Codes and upload requirements",
+        "NSPhotoLibraryUsageDescription": "We need to access your photos to be able to set your profile picture and upload requirements"
+      }
+    },
+    "facebookScheme": "fb225308005932859",
+    "facebookAppId": "225308005932859",
+    "facebookDisplayName": "ci-app",
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.datos.app",
+      "permissions": [
+        "CAMERA",
+        "CAMERA_ROLL",
+        "NOTIFICATIONS",
+        "MEDIA_LIBRARY",
+        "READ_INTERNAL_STORAGE",
+        "WRITE_INTERNAL_STORAGE",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "blockedPermissions": [
+        "android.permission.ACCESS_BACKGROUND_LOCATION"
+      ],
+      "versionCode": 55,
+      "config": {
+        "googleSignIn": {
+          "certificateHash": "CF:9A:50:30:18:E9:CD:4A:5A:79:4F:85:DB:19:3E:E6:E0:41:99:CE",
+          "apiKey": "AIzaSyBDY41e9WxfPhEsY1c9qe9K6lTcwX5ngls"
+        }
+      },
+      "googleServicesFile": "./google-services.json",
+      "useNextNotificationsApi": true
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6cc3502e-dafa-474f-bea0-051818b5653a"
+      }
+    },
+    "plugins": [
+      
+    ]
+  }
+}

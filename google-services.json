@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "333344526493",
+    "project_id": "ci-app-5e818",
+    "storage_bucket": "ci-app-5e818.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333344526493:android:599a3be58ae67bef76c474",
+        "android_client_info": {
+          "package_name": "com.datos.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333344526493-9nvdq3fef3tap968sou1v44bpof473uu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.datos.app",
+            "certificate_hash": "cf9a503018e9cd4a5a794f85db193ee6e04199ce"
+          }
+        },
+        {
+          "client_id": "333344526493-mmlhl20m8cvr3lfobv0j1eberorhvjds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIMp1fv_xB0nsrdy7ji11vgZDkXLWJYos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333344526493-mmlhl20m8cvr3lfobv0j1eberorhvjds.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "333344526493-758rthpn9ucdmqquhf5g1184galaosvk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.datos.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333344526493:android:3ba97bfdee81e3fc76c474",
+        "android_client_info": {
+          "package_name": "com.motor.ci"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333344526493-vs3el2mmhi28ehmneocmtscr7flj1hha.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.motor.ci",
+            "certificate_hash": "6a272c700a2e255bd70799e8daf403d464ebc169"
+          }
+        },
+        {
+          "client_id": "333344526493-mmlhl20m8cvr3lfobv0j1eberorhvjds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIMp1fv_xB0nsrdy7ji11vgZDkXLWJYos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333344526493-mmlhl20m8cvr3lfobv0j1eberorhvjds.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "333344526493-758rthpn9ucdmqquhf5g1184galaosvk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.datos.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333344526493:android:df03c2a3fc92d9f176c474",
+        "android_client_info": {
+          "package_name": "com.motorlandia.motorlandia2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333344526493-mmlhl20m8cvr3lfobv0j1eberorhvjds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIMp1fv_xB0nsrdy7ji11vgZDkXLWJYos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333344526493-mmlhl20m8cvr3lfobv0j1eberorhvjds.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "333344526493-758rthpn9ucdmqquhf5g1184galaosvk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.datos.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
