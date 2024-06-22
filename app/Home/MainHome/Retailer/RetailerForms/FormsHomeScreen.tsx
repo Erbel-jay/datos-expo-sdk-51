@@ -63,8 +63,9 @@ class FormsHomeScreenComponent extends React.Component<any, any> {
   }
 
   async componentDidMount() {
-    if (this.props.route.params !== undefined) {
-      let params = this.props.route.params
+    if (this.props.localSearchParams !== undefined) {
+      let params = this.props.localSearchParams
+      console.log("🚀 ~ FormsHomeScreenComponent ~ componentDidMount ~ params:", params)
       this.setState({ retailer: params })
     }
     this.processUser()

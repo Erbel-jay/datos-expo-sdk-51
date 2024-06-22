@@ -169,7 +169,7 @@ export default class  extends React.Component<any, any> {
     //if retailer id is on current ongoing loan, then navigate to the part of the form where you stop filling up
     let isExist = this.isStringInArrayOfObjects(this.state.retailersWithOngoingLoan, retailer._id)
     if(isExist){
-      router.push({pathname: "Home/MainHome/Retailer/RetailerForms", params: retailer} )
+      router.push({pathname: "Home/MainHome/Retailer/RetailerForms/FormsHomeScreen", params: retailer} )
     }else{
       router.push({pathname: "Home/MainHome/Retailer/ProductScreen", params: retailer})
     }

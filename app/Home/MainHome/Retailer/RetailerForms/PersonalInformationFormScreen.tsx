@@ -33,7 +33,9 @@ import { router, Link, useLocalSearchParams } from 'expo-router';
 
 const PersonalInformationFormScreen = () => {
     let localSearchParams = useLocalSearchParams()
-    return <PersonalInformationFormScreenComponent localSearchParams={localSearchParams}/>
+    return <PersonalInformationFormScreenComponent 
+      localSearchParams={localSearchParams}
+    />
   
 }
 
@@ -123,15 +125,15 @@ class PersonalInformationFormScreenComponent extends React.Component<any> {
   };
 
   componentDidMount = () => {
-    if (this.props.route.params !== undefined) {
-      let params = this.props.route.params
+    if (this.props.localSearchParams !== undefined) {
+      let params = this.props.localSearchParams
+      console.log("🚀 ~ PersonalInformationFormScreenComponent ~ params:", params)
       this.setState({ retailerDetails: params }, () => {
         this.getRetailerDetails(this.state.retailerDetails._id)
         this.getProvince()
         this.processUser();
       })
     }
-
   }
 
   //need checking
@@ -378,7 +380,7 @@ class PersonalInformationFormScreenComponent extends React.Component<any> {
             }, async () => {
               let newUserDetails = JSON.stringify(res.data.result)
               await _storeData('current_user', newUserDetails)
-              router.push('Home/MainHome/Retailer/RetailerForms');
+              router.push({pathname: 'Home/MainHome/Retailer/RetailerForms/FormsHomeScreen', params: this.state.retailerDetails});
             });
           }
         })
@@ -558,11 +560,17 @@ class PersonalInformationFormScreenComponent extends React.Component<any> {
     }
   };
 
-  getPermissionAsync = async () => {
-    const { status } = await Permissions.askAsync(
-      Permissions.CAMERA,
-      Permissions.MEDIA_LIBRARY
-    );
+  getMediaLibraryPermissionAsync = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
+    console.log("STATUS", status);
+    if (status !== "granted") {
+      alert("Sorry, we need media library permissions to make this work!");
+      // alert(`Permission Status: ${status}`);
+    }
+  };
+
+  getCameraRollPermissionAsync = async () => {
+    const { status } = await ImagePicker.requestCameraPermissionsAsync()
     console.log("STATUS", status);
     if (status !== "granted") {
       alert("Sorry, we need camera roll permissions to make this work!");
@@ -571,7 +579,7 @@ class PersonalInformationFormScreenComponent extends React.Component<any> {
   };
 
   selectPhoto = async (field: string) => {
-    await this.getPermissionAsync();
+    await this.getMediaLibraryPermissionAsync();
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       // aspect: [4, 4],
@@ -585,7 +593,7 @@ class PersonalInformationFormScreenComponent extends React.Component<any> {
   };
 
   takePhoto = async (field: string) => {
-    await this.getPermissionAsync();
+    await this.getCameraRollPermissionAsync();
     let result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,

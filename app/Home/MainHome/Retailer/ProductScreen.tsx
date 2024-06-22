@@ -78,7 +78,7 @@ class ProductScreenComponent extends React.Component<any, any> {
         // return
         if (this.props.localSearchParams !== undefined) {
             let params = this.props.localSearchParams
-            // console.log('retailer', params);
+            console.log('retailer', params);
             this.setState({retailer: params}, () => {
                 this.getRetailerFullDetails(this.state.retailer._id)
             })
