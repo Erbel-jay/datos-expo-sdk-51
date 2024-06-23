@@ -10,7 +10,7 @@ import {
   View,
   Image
 } from 'react-native'
-import { datosBlack, datosDarkGray, datosOrange } from '@/assets/styles/colorUsed';
+import { datosBlack, datosDarkGray, datosOrange } from '../../assets/styles/colorUsed';
 
 export default function HomeLayout() {
   return (
@@ -34,7 +34,7 @@ export default function HomeLayout() {
 
         headerRight: () => (
           <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity style={[styles.icon, { backgroundColor: 'transparent', marginRight: 10 }]} onPress={() => router.push('Home/Notifications')}>
+            <TouchableOpacity style={[styles.icon, { backgroundColor: 'transparent', marginRight: 10 }]} onPress={() => router.push('Home/QRCode')}>
               <IconMaterial
                 name="qrcode"
                 color={datosOrange}
@@ -95,6 +95,17 @@ export default function HomeLayout() {
         }
       }} />
 
+      <Drawer.Screen name="LoanDetails" options={{
+        drawerIcon: () => <Icon name="help-circle" size={24} color={datosDarkGray}/>,
+        title: 'Loan Details',
+        headerTitle: '',
+        headerStyle: {
+          elevation: 0,
+          shadowOpacity: 0,
+          height: 120
+        }
+      }} />
+
       <Drawer.Screen name="MakeAPayment" options={{
         drawerIcon: () => <Icon name="dollar-sign" size={24} color={datosDarkGray}/>,
         title: 'Make a Payment',
@@ -116,7 +127,7 @@ export default function HomeLayout() {
         }
       }} />
 
-      <Drawer.Screen name="Notifications" options={{
+      <Drawer.Screen name="QRCode" options={{
         drawerItemStyle: {height: 0},
         headerTitle: '',
         headerStyle: {

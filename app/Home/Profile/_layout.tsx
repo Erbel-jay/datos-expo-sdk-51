@@ -1,9 +1,7 @@
-import {View, Text} from 'react-native';
+import { Stack } from "expo-router";
 
 export default function ProfileLayout() {
-    return(
-        <View>
-            <Text>This is a Profile layout</Text>
-        </View>
-    )
+    return <Stack initialRouteName="ProfileScreen">
+        <Stack.Screen name="ProfileScreen" options={{headerShown: false}}/>
+    </Stack>
 }

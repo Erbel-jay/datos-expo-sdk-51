@@ -18,7 +18,7 @@ import axios from 'axios';
 import Config from '../../../constants/Config';
 const { _storeData, _retrieveData, _removeData } = require("../../../helpers/global-function");
 import Icon from "@expo/vector-icons/Feather"
-// import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
+import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
 import { showMessage, hideMessage } from "react-native-flash-message";
 import * as FileSystem from 'expo-file-system';
 import { router, Link, useLocalSearchParams } from 'expo-router';
@@ -444,7 +444,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
         elevation: 5,
         width: '80%',
-        height: 56,//vh(56),
+        height: vh(56),
         justifyContent: 'center',
         alignItems: 'center',
     },

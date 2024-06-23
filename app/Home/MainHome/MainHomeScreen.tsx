@@ -123,12 +123,13 @@ export default class MainHomeScreen extends React.Component<any, any> {
         notification.actionId === null
       ) {
         Notifications.dismissAllNotificationsAsync();
-        const { navigate } = this.props.navigation;
-        navigate("NotifDetails", {
+        router.push({pathname: "NotifDetails", 
+        params: 
+        {
           itemTitle: notification.data.title,
           itemDate: notification.data.dateUploaded,
           itemMsgs: notification.data.body,
-        });
+        }});
         this.setState({ notification: notification });
         console.log("notificaction1", notification);
       } else if ((await notification.origin) === "recieved") {
@@ -264,14 +265,14 @@ export default class MainHomeScreen extends React.Component<any, any> {
                               icon="Time-Insurance-1"
                               iconBgColor="#DA5F5A"
                               cardName="Get Free Insurance"
-                              onPress={() => this.props.navigation.navigate("InsuranceStackNavigator")}
+                              onPress={() => router.push('Home/MainHome/Insurance')}
                             />
 
                             <InformationCard
                               icon="organization-1"
                               iconBgColor="#E2814E"
                               cardName="Organization"
-                              onPress={() => this.props.navigation.navigate("OrganizationHomeStackNavigator")}
+                              onPress={() => router.push('Home/MainHome/Organization')}
                             />
                           
                           </View>
@@ -281,21 +282,21 @@ export default class MainHomeScreen extends React.Component<any, any> {
                               icon="accounting-1"
                               iconBgColor="#F3B103"
                               cardName="Account Balances"
-                              onPress={() => this.props.navigation.navigate("AccountBalancesStackNavigator")}
+                              onPress={() => router.push('Home/AccountBalances')}
                             />
 
                             <InformationCard
                               icon="chat-1"
                               iconBgColor="#E95E0B"
                               cardName="Messages"
-                              onPress={() => this.props.navigation.navigate("MessageStackNavigator")}
+                              onPress={() => router.push('Home/Messages')}
                             />
 
                             <InformationCard
                               icon="online-payment-1"
                               iconBgColor="#2E2E2E"
                               cardName="Make a Payment"
-                              onPress={() => this.props.navigation.navigate("OneTimePaymentStackNavigator")}
+                              onPress={() => router.push('Home/MakeAPayment')}
                             />
                             
                           </View>
@@ -316,7 +317,7 @@ export default class MainHomeScreen extends React.Component<any, any> {
                         <View style={styles.notificationContainer}>
                           <View style={{flexDirection: 'row',justifyContent: 'space-between', marginBottom: 10, paddingHorizontal: 10}}>
                             <Text style={{fontFamily: 'CalibriBold', fontSize: 19, color: datosBlack}}>Notifications</Text>
-                            <TouchableOpacity onPress={() => this.props.navigation.navigate("Message")}>
+                            <TouchableOpacity onPress={() => router.push('Home/Messages')}>
                               <Text style={{fontFamily: 'CalibriBold', fontSize: 19, color: datosOrange}}>See all</Text>
                             </TouchableOpacity>
                           </View>

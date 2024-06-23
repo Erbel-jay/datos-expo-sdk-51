@@ -1,9 +1,9 @@
-import {View, Text} from 'react-native';
+import { Stack } from "expo-router";
 
 export default function MakeAPaymentLayout() {
-    return(
-        <View>
-            <Text>This is a MakeAPayment layout</Text>
-        </View>
-    )
+    return <Stack initialRouteName="RetailersScreen">
+        <Stack.Screen name="RetailersScreen" options={{headerShown: false}}/>
+        <Stack.Screen name="CustomerDetailsMAPScreen" options={{headerShown: false}}/>
+        <Stack.Screen name="PaymentMAPScreen" options={{headerShown: false}}/>
+    </Stack>
 }
