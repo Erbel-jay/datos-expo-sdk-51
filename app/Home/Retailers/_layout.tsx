@@ -1,9 +1,7 @@
-import {View, Text} from 'react-native';
+import { Stack } from "expo-router";
 
 export default function RetailersLayout() {
-    return(
-        <View>
-            <Text>This is a retailers layout</Text>
-        </View>
-    )
+    return <Stack initialRouteName="RetailersScreen">
+        <Stack.Screen name="RetailersScreen" options={{headerShown: false}}/>
+    </Stack>
 }

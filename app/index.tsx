@@ -8,6 +8,9 @@ import {
     ImageBackground
 } from 'react-native';
 import { stripBaseUrl } from 'expo-router/build/fork/getStateFromPath';
+import FlashMessage from "react-native-flash-message";
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default class IndexPage extends React.Component<any, any> {
     constructor(props: any){
@@ -23,7 +26,11 @@ export default class IndexPage extends React.Component<any, any> {
 
     render(){
         return(
-            <ImageBackground style={styles.container} source={require("../assets/images/splash.png")}/>
+            <SafeAreaProvider>
+                <StatusBar />
+                <FlashMessage position="top" />
+                <ImageBackground style={styles.container} source={require("../assets/images/splash.png")}/>
+            </SafeAreaProvider>
         )
     }
 }

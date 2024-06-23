@@ -25,7 +25,8 @@ import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
 import { datosBlack, datosLightGray, datosOrange, datosWhiteShade } from '../../../../../assets/styles/colorUsed';
 import { BackBtn } from "../../../../../components/Buttons"
-import { router, Link, useLocalSearchParams } from 'expo-router';
+import { router, Link, useLocalSearchParams, useFocusEffect } from 'expo-router';
+
 
 
 const FormsHomeScreen = () => {
@@ -63,6 +64,7 @@ class FormsHomeScreenComponent extends React.Component<any, any> {
   }
 
   async componentDidMount() {
+    console.log("🚀 ~ FormsHomeScreenComponent ~ componentDidMount ~ componentDidMount:", 'RE CALLED')
     if (this.props.localSearchParams !== undefined) {
       let params = this.props.localSearchParams
       console.log("🚀 ~ FormsHomeScreenComponent ~ componentDidMount ~ params:", params)
@@ -85,6 +87,7 @@ class FormsHomeScreenComponent extends React.Component<any, any> {
     }
 
     this.focusListener = navigation.addListener('focus', async () => {
+      console.log('im currently on focus');
       let current_user_data: any = await _retrieveData('current_user');
       let current_user = JSON.parse(current_user_data);
       this.setState({

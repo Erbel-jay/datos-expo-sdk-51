@@ -386,6 +386,7 @@ class RequirementsFormScreenComponent extends React.Component<any, any> {
           if (res.data.result) {
             let result = res.data.result;
             console.log('result', result);
+            this.setState({loadingModal: false})
             if (save) {
               this.alert("Info", "Requirements Added Successfully!");
             } else {

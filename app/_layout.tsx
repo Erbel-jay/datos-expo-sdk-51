@@ -15,9 +15,6 @@ export default function Start() {
 }
 
 function RootLayoutNav() {
-
-  
-
   SplashScreen.hideAsync();
   return (
       <Stack>

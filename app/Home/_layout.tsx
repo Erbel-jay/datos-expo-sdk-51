@@ -3,17 +3,20 @@ import DrawerContent from './DrawerContent';
 import { DrawerActions } from '@react-navigation/native';
 import { router } from 'expo-router';
 import Icon from "@expo/vector-icons/Feather";
+import IconMaterial from '@expo/vector-icons/build/MaterialCommunityIcons';
 import {
   StyleSheet,
   TouchableOpacity,
   View,
   Image
 } from 'react-native'
+import { datosBlack, datosDarkGray, datosOrange } from '@/assets/styles/colorUsed';
 
 export default function HomeLayout() {
   return (
     <Drawer initialRouteName='MainHome' drawerContent={(props: any) => <DrawerContent {...props}/>}
       screenOptions={({ navigation }: { navigation: any }) => ({
+        drawerActiveTintColor: datosOrange,
         headerShown: true,
         headerStyle: {
           backgroundColor: 'red',
@@ -23,7 +26,7 @@ export default function HomeLayout() {
           <TouchableOpacity style={[styles.icon, { marginLeft: 20 }]} onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
             <Icon
               name="menu"
-              color={'#4C95A0'}
+              color={datosBlack}
               size={26}
             />
           </TouchableOpacity>
@@ -32,9 +35,9 @@ export default function HomeLayout() {
         headerRight: () => (
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity style={[styles.icon, { backgroundColor: 'transparent', marginRight: 10 }]} onPress={() => router.push('Home/Notifications')}>
-              <Icon
-                name="bell"
-                color={'#4C95A0'}
+              <IconMaterial
+                name="qrcode"
+                color={datosOrange}
                 size={26}
               />
             </TouchableOpacity>
@@ -49,7 +52,7 @@ export default function HomeLayout() {
       })}
     >
       <Drawer.Screen name="MainHome"  options={{
-        drawerIcon: () => <Icon name="home" size={24} color={'#4C95A0'}/>,
+        drawerIcon: () => <Icon name="home" size={24} color={datosDarkGray}/>,
         title: 'Home',
         headerTitle: '',
         headerStyle: {
@@ -61,7 +64,7 @@ export default function HomeLayout() {
       }} />
 
       <Drawer.Screen name="Retailers" options={{
-        drawerIcon: () => <Icon name="printer" size={24} color={'#4C95A0'}/>,
+        drawerIcon: () => <Icon name="layers" size={24} color={datosDarkGray}/>,
         title: 'Your Retailers',
         headerTitle: '',
         headerStyle: {
@@ -72,7 +75,7 @@ export default function HomeLayout() {
       }} />
 
       <Drawer.Screen name="Messages" options={{
-        drawerIcon: () => <Icon name="printer" size={24} color={'#4C95A0'}/>,
+        drawerIcon: () => <Icon name="mail" size={24} color={datosDarkGray}/>,
         headerTitle: '',
         headerStyle: {
           elevation: 0,
@@ -82,7 +85,7 @@ export default function HomeLayout() {
       }} />
 
       <Drawer.Screen name="AccountBalances" options={{
-        drawerIcon: () => <Icon name="printer" size={24} color={'#4C95A0'}/>,
+        drawerIcon: () => <Icon name="file-text" size={24} color={datosDarkGray}/>,
         title: 'Account Balancees',
         headerTitle: '',
         headerStyle: {
@@ -93,7 +96,7 @@ export default function HomeLayout() {
       }} />
 
       <Drawer.Screen name="MakeAPayment" options={{
-        drawerIcon: () => <Icon name="printer" size={24} color={'#4C95A0'}/>,
+        drawerIcon: () => <Icon name="dollar-sign" size={24} color={datosDarkGray}/>,
         title: 'Make a Payment',
         headerTitle: '',
         headerStyle: {
@@ -139,7 +142,7 @@ export default function HomeLayout() {
 
 const styles = StyleSheet.create({
   icon: {
-    backgroundColor: '#1A1C30',
+    backgroundColor: 'transparent',
     width: 46,
     height: 46,
     borderRadius: 23,
@@ -153,7 +156,7 @@ const styles = StyleSheet.create({
     height: 46,
     borderRadius: 23,
     borderWidth: 2,
-    borderColor: '#4C95A0'
+    borderColor: datosOrange
   }
   
 })
