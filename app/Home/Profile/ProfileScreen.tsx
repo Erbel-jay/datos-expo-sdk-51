@@ -100,7 +100,7 @@ export default class ProfileScreen extends React.Component<any, any> {
         },
         {
           text: "OK",
-          onPress: () => router.push("Home/MainHome"),
+          onPress: () => router.push("Home/MainHome/MainHomeScreen"),
         },
       ],
       { cancelable: false }

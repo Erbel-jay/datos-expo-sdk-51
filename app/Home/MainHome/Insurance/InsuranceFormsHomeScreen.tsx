@@ -133,7 +133,7 @@ export default class InsuranceHomeScreen extends React.Component<any, any> {
         },
         {
           text: "OK",
-          onPress: () => router.push('Home/MainHome'),
+          onPress: () => router.push('Home/MainHome/MainHomeScreen'),
         },
       ],
       { cancelable: false }
@@ -220,7 +220,7 @@ export default class InsuranceHomeScreen extends React.Component<any, any> {
 
 
                   <View style={[globalStyle.buttonHolder, { marginTop: 25 }]}>
-                    <BackBtn onPress={() => router.push('Home/MainHome')} />
+                    <BackBtn onPress={() => router.push('Home/MainHome/MainHomeScreen')} />
                     <View style={globalStyle.horizontalSpacer}></View>
                     <SubmitSmallBtn disable={this.submitButtonChecker()} onPress={() => this.submit()} />
                   </View>
