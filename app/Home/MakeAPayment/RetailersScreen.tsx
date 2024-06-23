@@ -16,7 +16,7 @@ import Config from '../../../constants/Config';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { datosBlack, datosLightGray, datosOrange, datosWhiteShade } from '../../../assets/styles/colorUsed';
 import { router } from 'expo-router';
-
+import {BackBtn} from "../../../components/Buttons"
 
 export default class RetailersScreen extends React.Component<any, any> {
   constructor(props){
@@ -57,6 +57,7 @@ export default class RetailersScreen extends React.Component<any, any> {
             <View style={styles.commingSoonBgDesign}>
               <Text style={styles.commingSoonText}>Comming Soon</Text>
             </View>
+            <BackBtn onPress={() => router.push('Home/MainHome/MainHomeScreen')} />
           </View>
           }
           {
@@ -112,7 +113,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     borderColor: datosOrange,
-    borderWidth: 2
+    borderWidth: 2,
+    marginBottom: 20
   },
   commingSoonText: {
     fontFamily: 'CalibriBold',

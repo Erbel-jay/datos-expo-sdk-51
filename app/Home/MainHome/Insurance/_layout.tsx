@@ -1,7 +1,11 @@
-import {View, Text} from 'react-native'
+import { Stack } from "expo-router";
 
 export default function InsuranceLayout() {
-    <View>
-        <Text>this is unsurance</Text>
-    </View>
+    return <Stack initialRouteName="InsuranceFormsHomeScreen">
+        <Stack.Screen name="InsuranceFormsHomeScreen" options={{headerShown: false}}/>
+        <Stack.Screen name="InsurancePersonalInformationFormScreen" options={{headerShown: false}}/>
+        <Stack.Screen name="InsuranceFinancialStatusFormScreen" options={{headerShown: false}}/>
+        <Stack.Screen name="InsuranceFamilyBackgroundFormScreen" options={{headerShown: false}}/>
+        <Stack.Screen name="InsuranceRequirementsFormScreen" options={{headerShown: false}}/>
+    </Stack>
 }
