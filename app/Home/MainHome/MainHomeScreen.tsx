@@ -20,7 +20,18 @@ import moment from "moment";
 import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
 import { datosBlack, datosLightGray, datosOrange } from '../../../assets/styles/colorUsed';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
+
+function CallProcessUser({ processUser }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      processUser()
+    }, [])
+  );
+
+  return null;
+}
+
 
 export default class MainHomeScreen extends React.Component<any, any> {
   focusListener: any;
@@ -67,12 +78,13 @@ export default class MainHomeScreen extends React.Component<any, any> {
         this.setState({
           noUser: false
         })
-        this.processUser()
+        // this.processUser()
       }
     })
   }
 
   processUser = async () => {
+    console.log("🚀 ~ MainHomeScreen ~ processUser")
     const { navigation } = this.props;
     let current_user_data: any = await _retrieveData('current_user');
     let current_user = JSON.parse(current_user_data);
@@ -81,20 +93,12 @@ export default class MainHomeScreen extends React.Component<any, any> {
         current_user_object_id: current_user.id,
         firstName: current_user.personalInformation.firstName
       }, () => {
+        console.log('----_ID---:', this.state.current_user_object_id);
         this.getAllUserData();
         // this.registerToken();
         this.getLatestUnreadMessageForCustomer(this.state.current_user_object_id);
       })
     }
-    
-    this.focusListener = navigation.addListener('focus', async () => {
-      let current_user_data: any = await _retrieveData('current_user');
-      let current_user = JSON.parse(current_user_data);
-      this.setState({
-        current_user_object_id: current_user.id,
-        firstName: current_user.personalInformation.firstName
-      })
-    });
     
     setInterval(() => {
       this.getAllUserData(),
@@ -240,6 +244,7 @@ export default class MainHomeScreen extends React.Component<any, any> {
         style={styles.container}
       >
         <ScrollView>
+          <CallProcessUser processUser={this.processUser} />
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
               {
                 this.state.noUser == true?

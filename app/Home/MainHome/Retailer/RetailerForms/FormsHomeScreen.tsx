@@ -27,7 +27,15 @@ import { datosBlack, datosLightGray, datosOrange, datosWhiteShade } from '../../
 import { BackBtn } from "../../../../../components/Buttons"
 import { router, Link, useLocalSearchParams, useFocusEffect } from 'expo-router';
 
+function CallProcessUser({ processUser }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      processUser()
+    }, [])
+  );
 
+  return null;
+}
 
 const FormsHomeScreen = () => {
   let localSearchParams = useLocalSearchParams()
@@ -37,7 +45,6 @@ const FormsHomeScreen = () => {
 export default FormsHomeScreen
 
 class FormsHomeScreenComponent extends React.Component<any, any> {
-  focusListener: any;
   constructor(props: any) {
     super(props)
   }
@@ -64,17 +71,16 @@ class FormsHomeScreenComponent extends React.Component<any, any> {
   }
 
   async componentDidMount() {
-    console.log("🚀 ~ FormsHomeScreenComponent ~ componentDidMount ~ componentDidMount:", 'RE CALLED')
     if (this.props.localSearchParams !== undefined) {
       let params = this.props.localSearchParams
       console.log("🚀 ~ FormsHomeScreenComponent ~ componentDidMount ~ params:", params)
       this.setState({ retailer: params })
     }
-    this.processUser()
+    // this.processUser()
   }
 
   processUser = async () => {
-    const { navigation } = this.props;
+    console.log("🚀 ~ FormsHomeScreenComponent ~ processUser")
     let current_user_data: any = await _retrieveData('current_user');
     let current_user = JSON.parse(current_user_data);
     if (current_user) {
@@ -85,17 +91,6 @@ class FormsHomeScreenComponent extends React.Component<any, any> {
         this.getAllUserData();
       })
     }
-
-    this.focusListener = navigation.addListener('focus', async () => {
-      console.log('im currently on focus');
-      let current_user_data: any = await _retrieveData('current_user');
-      let current_user = JSON.parse(current_user_data);
-      this.setState({
-        current_user_object_id: current_user.id,
-        firstName: current_user.personalInformation.firstName
-      })
-    });
-
   }
 
   getLoanSubmitStatus = (currentOngoingLoans: any, retailer_id: any) => {
@@ -145,7 +140,7 @@ class FormsHomeScreenComponent extends React.Component<any, any> {
     axios.get(Config.api + `/user/getUser/${this.state.current_user_object_id}`)
     .then(async (res: any) => {
       await _storeData('current_user', JSON.stringify(res.data.result));
-      router.push('Home')
+      router.push('Home/MainHome/MainHomeScreen')
     })
     .catch(err => {
       console.log("getUserNewUpdatedDataAfterSubmitForm ERROR:", err)
@@ -158,7 +153,7 @@ class FormsHomeScreenComponent extends React.Component<any, any> {
     let financialStatus = userDetails.dynamicFinancialStatus
     let requirments = userDetails.requirements
 
-    
+    return
 
     if (!personalInformation) {
       router.push({pathname: 'Home/MainHome/Retailer/RetailerForms/PersonalInformationFormScreen', params: this.state.retailer})
@@ -289,6 +284,7 @@ class FormsHomeScreenComponent extends React.Component<any, any> {
         <ScrollView>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={globalStyle.wrapper}>
+              <CallProcessUser processUser={this.processUser} />
               <View style={{ alignItems: 'center', marginBottom: 25 }}>
                 <Image source={{ uri: this.state.retailer.logo }} style={styles.logo} />
                 <Text style={[globalStyle.commonText, { fontSize: 18, fontWeight: 'bold' }]}>{this.state.retailer.name}</Text>

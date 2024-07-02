@@ -17,7 +17,6 @@ import { globalStyle } from "../../../../../assets/styles/globalStyle";
 import { RequirementsImagePicker } from "../../../../../components/Inputs";
 import { CancelBtn, BackBtn, NextBtn, SaveBtn } from "../../../../../components/Buttons";
 import * as ImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
 import Config from "../../../../../constants/Config";
 import axios from "axios";
 import modalStyle from "../../../../../components/Modal";
@@ -146,15 +145,15 @@ class RequirementsFormScreenComponent extends React.Component<any, any> {
           this.getRequirementsData()
         } else {
           let data = res.data.result
-          this.setState({ soc: data.soc }, () => {
-            if (this.state.productDetails !== undefined) {
-              this.setState({
-                requiredFields: this.state.soc == "Employed" ? this.state.productDetails.fields : this.state.productDetails.selfEmployedFields
-              }, () => {
-              })
-            }
-            this.getRequirementsData()
-          })
+          // this.setState({ soc: data.soc }, () => {
+          //   if (this.state.productDetails !== undefined) {
+          //     this.setState({
+          //       requiredFields: this.state.soc == "Employed" ? this.state.productDetails.fields : this.state.productDetails.selfEmployedFields
+          //     }, () => {
+          //     })
+          //   }
+          //   this.getRequirementsData()
+          // })
         }
       })
       .catch(err => {
@@ -413,7 +412,8 @@ class RequirementsFormScreenComponent extends React.Component<any, any> {
           this.state.productDetails == null || this.state.soc == null
             ?
             <View style={[globalStyle.wrapper, { flex: 1, justifyContent: 'center', alignItems: 'center' }]}>
-              <Text style={globalStyle.commonText}>Please Fill up the Product form and Financial Status Form first.</Text>
+              <Text style={[globalStyle.commonText, {marginBottom: 20}]}>Please Fill up Financial Status Form first.</Text>
+              <BackBtn onPress={() => router.push('Home/MainHome/Retailer/FormsHomeScreen')} />
             </View>
             :
             <View style={this.state.isLoaded == false ? { flex: 1, justifyContent: 'center', alignItems: 'center' } : null}>

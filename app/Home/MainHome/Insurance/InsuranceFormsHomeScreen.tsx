@@ -26,7 +26,17 @@ import moment from "moment";
 import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
 import { datosBlack, datosLightGray, datosOrange, datosWhiteShade } from '../../../../assets/styles/colorUsed';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
+
+function CallProcessUser({ processUser }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      processUser()
+    }, [])
+  );
+
+  return null;
+}
 
 export default class InsuranceHomeScreen extends React.Component<any, any> {
   focusListener: any;
@@ -47,7 +57,7 @@ export default class InsuranceHomeScreen extends React.Component<any, any> {
 
   async componentDidMount() {
     this.getInsuranceDetails()
-    this.processUser()
+    // this.processUser()
   }
 
   getInsuranceDetails = async () => {
@@ -62,6 +72,7 @@ export default class InsuranceHomeScreen extends React.Component<any, any> {
   }
 
   processUser = async () => {
+    console.log("🚀 ~ InsuranceHomeScreen ~ processUse")
     const { navigation } = this.props;
     let current_user_data: any = await _retrieveData('current_user');
     let current_user = JSON.parse(current_user_data);
@@ -174,6 +185,7 @@ export default class InsuranceHomeScreen extends React.Component<any, any> {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
       >
+        <CallProcessUser processUser={this.processUser} />
           <View style={[styles.container, {justifyContent: 'center', alignItems: 'center'}]}>
             <View style={styles.commingSoonBgDesign}>
               <Text style={styles.commingSoonText}>Comming Soon</Text>

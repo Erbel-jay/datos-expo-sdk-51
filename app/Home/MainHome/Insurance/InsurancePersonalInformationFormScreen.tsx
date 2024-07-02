@@ -26,7 +26,6 @@ import Config from "../../../../constants/Config";
 const { _storeData, _retrieveData, _removeData } = require("../../../../helpers/global-function");
 import modalStyle from "../../../../components/Modal";
 import InsuranceProfileAttachmentFormScreen from "./InsuranceProfileAttachmentFormScreen"
-import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
 import {router, useLocalSearchParams} from 'expo-router'
 
@@ -558,18 +557,6 @@ class InsurancePersonalInformationFormScreenComponent extends React.Component<an
         let value: any = { [field]: input };
         this.setState(value);
       }
-    }
-  };
-
-  getPermissionAsync = async () => {
-    const { status } = await Permissions.askAsync(
-      Permissions.CAMERA,
-      Permissions.MEDIA_LIBRARY
-    );
-    console.log("STATUS", status);
-    if (status !== "granted") {
-      alert("Sorry, we need camera roll permissions to make this work!");
-      // alert(`Permission Status: ${status}`);
     }
   };
 

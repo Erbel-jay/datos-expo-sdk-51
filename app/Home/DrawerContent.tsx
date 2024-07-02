@@ -10,6 +10,10 @@ import {
 } from 'react-native-paper'
 import Icon from '@expo/vector-icons/Feather';
 import { router } from 'expo-router';
+// import firebase from "firebase";
+import { _removeData } from '../../helpers/global-function';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
 const iconSize = 20
 
 export default function DrawerContent(props: any) {
@@ -17,14 +21,16 @@ export default function DrawerContent(props: any) {
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerContent}>
-                        <View style={{ flexDirection: 'row', marginTop: 15, marginBottom: 20 }}>
-                            {/* <Image
+                        <TouchableOpacity 
+                            onPress={() => router.push('Home/MainHome/MainHomeScreen')}
+                            style={{ flex: 1, flexDirection: 'row', marginTop: 15, marginBottom: 20, justifyContent:'center', }}>
+                            <Image
                                 {...props}
-                                source={require('../../assets/images/spytrack_logo_old.png')}
+                                source={require('../../assets/images/logos/Datos-official-logo-design-colored.png')}
                                 size={40}
-                                style={{ height: 60, width: '100%', resizeMode: "contain", }}
-                            /> */}
-                        </View>
+                                style={{ height: 30, width: '100%', resizeMode: "contain", }}
+                            />
+                        </TouchableOpacity>
 
                     <DrawerItemList {...props} />
 
@@ -41,6 +47,9 @@ export default function DrawerContent(props: any) {
                     )}
                     label="Sign Out"
                     onPress={async () => {
+                        // firebase.auth().signOut();
+                        _removeData("current_user");
+                        _removeData("last_user_loggedin");
                         router.replace('Auth')
                     }}
                 />

@@ -26,7 +26,6 @@ import Config from "../../../../../constants/Config";
 const { _storeData, _retrieveData, _removeData } = require("../../../../../helpers/global-function");
 import modalStyle from "../../../../../components/Modal";
 import ProfileAttachmentFormScreen from "./ProfileAttachmentFormScreen"
-import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
 import { router, Link, useLocalSearchParams } from 'expo-router';
 
@@ -750,12 +749,16 @@ class PersonalInformationFormScreenComponent extends React.Component<any> {
                         value={this.state.address.barangay}
                         items={this.state.address.city != "" ? this.state.barangays : []}
                       />
-
-                      <View style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start', width: '100%' }}>
-                        <Text style={[globalStyle.title, { fontSize: 12 }]}>
-                          Additional Information
-                        </Text>
-                      </View>
+                      {
+                        this.state.piFields.length > 0 ?
+                          <View style={{ marginTop: 20, justifyContent: 'flex-start', alignItems: 'flex-start', width: '100%' }}>
+                            <Text style={[globalStyle.title, { fontSize: 12 }]}>
+                              Additional Information
+                            </Text>
+                          </View>
+                        : null
+                      }
+                      
 
                       {
                         this.state.piFields.map((field: any, i: number) => {

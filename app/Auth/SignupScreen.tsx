@@ -17,7 +17,6 @@ import {
 import { AppInput, AppSelect, DatePickerInputMask, RequirementsImagePicker, AppInputMask } from "../../components/Inputs";
 // import { ScrollView } from "react-native-gesture-handler";
 import * as ImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
 import AccountInformation from "./AccountInformation";
 import Config from "../../constants/Config";
 import axios from "axios";
@@ -365,11 +364,17 @@ export default SignupScreen
     return this.state;
   };
 
-  getPermissionAsync = async () => {
-    const { status } = await Permissions.askAsync(
-      Permissions.CAMERA,
-      Permissions.MEDIA_LIBRARY
-    );
+  getMediaLibraryPermissionAsync = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
+    console.log("STATUS", status);
+    if (status !== "granted") {
+      alert("Sorry, we need media library permissions to make this work!");
+      // alert(`Permission Status: ${status}`);
+    }
+  };
+
+  getCameraRollPermissionAsync = async () => {
+    const { status } = await ImagePicker.requestCameraPermissionsAsync()
     console.log("STATUS", status);
     if (status !== "granted") {
       alert("Sorry, we need camera roll permissions to make this work!");
@@ -378,7 +383,7 @@ export default SignupScreen
   };
 
   selectPhoto = async (field: string) => {
-    await this.getPermissionAsync();
+    await this.getMediaLibraryPermissionAsync();
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       // aspect: [4, 4],
@@ -392,7 +397,7 @@ export default SignupScreen
   };
 
   takePhoto = async (field: string) => {
-    await this.getPermissionAsync();
+    await this.getCameraRollPermissionAsync();
     let result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,

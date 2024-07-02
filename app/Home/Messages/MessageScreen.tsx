@@ -11,12 +11,23 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import Config from "../../../constants/Config";
 import axios from 'axios';
+import Icon from "@expo/vector-icons/Feather"
 import { NotifyBox, TwoTab } from "../../../components/cards"
 import { datosBlack, datosLightGray, datosRed } from '../../../assets/styles/colorUsed';
 import { globalStyle } from '../../../assets/styles/globalStyle';
 import { BackBtn } from '../../../components/Buttons';
 import { router, useFocusEffect } from 'expo-router';
 const { _storeData, _retrieveData, _removeData } = require("../../../helpers/global-function");
+
+function CallStartFunction({ startFunction }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      startFunction()
+    }, [])
+  );
+
+  return null;
+}
 
 export default class MessageScreen extends React.Component<any, any> {
   focusListener: any;
@@ -77,6 +88,20 @@ export default class MessageScreen extends React.Component<any, any> {
     }
   }
 
+  removeDuplicates(array, key) {
+    const seen = new Set();
+    return array.filter(item => {
+        const value = item[key];
+        // Return false if duplicate is found
+        if (seen.has(value)) {
+            return false;
+        }
+        // Add key (e.g., item.id) to Set
+        seen.add(value);
+        return true;
+    });
+}
+
   getMessagesSentToCustmer = async (user_id: any) => {
     try {
       axios.get(`${Config.api}/messages/getMessagesSentToCustmer/${user_id}`)
@@ -112,11 +137,14 @@ export default class MessageScreen extends React.Component<any, any> {
         let retailers: any = []
         let loans = res.data.result.loans
         for (let i = 0; i < loans.length; i++) {
+          loans[i].product.retailer.name
+          console.log('retailer:', loans[i].product.retailer.name);
           retailers.push(loans[i].product.retailer)
         }
+        let uniqueArrayOfRetailers = this.removeDuplicates(retailers, '_id');
         this.setState({
           data: res.data.result,
-          retailers,
+          retailers: uniqueArrayOfRetailers,
         })
       })
       .catch(err => {
@@ -200,6 +228,12 @@ export default class MessageScreen extends React.Component<any, any> {
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.headerHolder}>
+          <TouchableOpacity style={{ marginRight: 20 }} onPress={() => router.push('Home/MainHome/MainHomeScreen')}>
+              <Icon name="arrow-left" color={datosBlack} size={25} />
+          </TouchableOpacity>
+        </View>
+        <CallStartFunction startFunction={this.startFunction} />
         {/* <ScrollView> */}
         {
           this.state.isLoaded ?
@@ -237,6 +271,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  headerHolder: {
+    padding: 10,
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   },
   headerContainer: {
     marginBottom: 20,

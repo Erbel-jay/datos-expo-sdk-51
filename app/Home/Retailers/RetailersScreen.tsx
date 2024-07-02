@@ -20,9 +20,22 @@ const { _retrieveData } = require("../../../helpers/global-function");
 import {BackBtn} from "../../../components/Buttons"
 import Icon from '@expo/vector-icons/build/Feather';
 import { datosOrange } from '../../../assets/styles/colorUsed';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
+
+
+//need focus hook
+function FetchData({ processUser }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      processUser()
+    }, [])
+  );
+
+  return null;
+}
 
 export default class RetailersScreen extends React.Component {
+  focusListener: any;
   constructor(public props: any) {
     super(props);
   }
@@ -35,10 +48,12 @@ export default class RetailersScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.processUser();
+    console.log("🚀 ~ RetailersScreen ~ componentDidMount:")
+    // this.processUser();
   }
 
   processUser = async () => {
+    console.log("🚀 ~ RetailersScreen ~ processUser:")
     let current_user_data: any = await _retrieveData('current_user');
     let current_user = JSON.parse(current_user_data);
     if (current_user) {
@@ -49,7 +64,11 @@ export default class RetailersScreen extends React.Component {
         this.getAllUserData();
       })
     }
+
+    
   }
+
+  
 
   getUserLoansRetailer = async () => {
     try{
@@ -101,6 +120,9 @@ export default class RetailersScreen extends React.Component {
     }
   }
 
+  _handleUpdate = (data) => {
+    console.log("🚀 ~ RetailersScreen ~ data:", data)
+  }
 
   render(){
     return (
@@ -111,6 +133,9 @@ export default class RetailersScreen extends React.Component {
         
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={[globalStyle.wrapper]}>
+          <FetchData 
+            processUser={this.processUser}
+          />
             <Text style={globalStyle.title}>
               Your Retailers
             </Text>
@@ -156,7 +181,7 @@ export default class RetailersScreen extends React.Component {
                     }
                     
                     <View style={{alignItems: 'center'}}>
-                      <BackBtn onPress={() => this.props.navigation.goBack()} />
+                      <BackBtn onPress={() => router.back()} />
                     </View>
                   </View>
                   

@@ -144,6 +144,11 @@ addAccountNumberToUser = async (account: any) => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={globalStyle.container}
       >
+        <View style={styles.headerHolder}>
+          <TouchableOpacity style={{ marginRight: 20 }} onPress={() => router.push('Home/MainHome/MainHomeScreen')}>
+              <Icon name="arrow-left" color={datosBlack} size={25} />
+          </TouchableOpacity>
+        </View>
         <View style={styles.titleWrapper}>
           <View style={{alignItems: 'center'}}>
             <Text style={styles.title}>Retailers</Text>
@@ -324,7 +329,7 @@ addAccountNumberToUser = async (account: any) => {
 
 const styles = StyleSheet.create({
   titleWrapper: {
-    paddingHorizontal: 40,
+    paddingHorizontal: 20,
     paddingTop: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -483,5 +488,12 @@ const styles = StyleSheet.create({
   exBtn:{
     fontSize: 20,
     color: '#E71409'
+  },
+  headerHolder: {
+    padding: 10,
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   },
 });

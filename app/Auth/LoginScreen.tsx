@@ -121,10 +121,9 @@ export default class LoginScreen extends React.Component<any, any> {
 
   getLastUserLoggedIn = async () => {
     console.log('getLastUserLoggedIn was called');
-
-
     let current_user_data: any = await _retrieveData('current_user');
     let current_user = JSON.parse(current_user_data);
+    console.log("🚀 ~ LoginScreen ~ getLastUserLoggedIn= ~ current_user:", current_user)
     if (current_user) {
       console.log('there is still a current user');
       router.push("Home")
@@ -498,7 +497,7 @@ export default class LoginScreen extends React.Component<any, any> {
               })
             } else {
               console.log("navigate to signup screen");
-              router.push({pathname: 'Home', params: {
+              router.push({pathname: 'Auth/SignupScreen', params: {
                 social_id: appleSocialID,
                 firstName: credential.fullName?.givenName,
                 lastName: credential.fullName?.familyName,

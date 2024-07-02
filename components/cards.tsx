@@ -10,6 +10,7 @@ import { ScrollView, TextInput, TouchableWithoutFeedback } from 'react-native-ge
 //
 import { Feather } from "@expo/vector-icons";
 import { blob } from 'stream/consumers';
+import { router } from 'expo-router';
 
 
 
@@ -373,7 +374,7 @@ class ComposeMessage extends React.Component<ComposeMessageProps> {
     return (
       <View style={[styles.listOfRetailersRecipientsWrapper, { flex: 1 }]}>
         <View style={{ alignItems: 'center', backgroundColor: '#fff', paddingVertical: 10, height: 60}}>
-          <TouchableOpacity style={{position: 'absolute', left: 10, top: 10}} onPress={() => this.props.navigation.goBack()}>
+          <TouchableOpacity style={{position: 'absolute', left: 10, top: 10}} onPress={() => router.back()}>
             <Text style={{fontSize: 12, color: datosOrange}}>Cancel</Text>
           </TouchableOpacity>
           <Text style={{fontSize: 15, color: datosBlack, fontWeight: 'bold'}}>New Message</Text>

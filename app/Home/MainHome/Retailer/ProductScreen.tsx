@@ -274,7 +274,7 @@ class ProductScreenComponent extends React.Component<any, any> {
             message,
             [
                 {
-                    text: "OK", onPress: () => { router.push({pathname: "Home/MainHome/Retailer/RetailerForms", params: this.state.retailer}) }
+                    text: "OK", onPress: () => { router.push({pathname: "Home/MainHome/Retailer/RetailerForms/FormsHomeScreen", params: this.state.retailer}) }
                 }
             ],
             { cancelable: false }

@@ -17,11 +17,11 @@ import { globalStyle } from "../../../../assets/styles/globalStyle";
 import { RequirementsImagePicker } from "../../../../components/Inputs";
 import { CancelBtn, BackBtn, NextBtn, SaveBtn } from "../../../../components/Buttons";
 import * as ImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
 import Config from "../../../../constants/Config";
 import axios from "axios";
 import modalStyle from "../../../../components/Modal";
 import Icon from '@expo/vector-icons/build/MaterialCommunityIcons';
+import { router } from "expo-router";
 const { getHeader } = require("../../../../helpers/global-function");
 const { _storeData, _retrieveData } = require("../../../../helpers/global-function");
 
@@ -246,16 +246,6 @@ export default class InsuranceRequirementsFormScreen extends React.Component<any
     this.setState({ requiredFields });
   };
 
-  getPermissionAsync = async () => {
-    const { status } = await Permissions.askAsync(
-      Permissions.CAMERA,
-      Permissions.CAMERA_ROLL
-    );
-    if (status !== "granted") {
-      alert("Sorry, we need camera roll permissions to make this work!");
-    }
-  };
-
   chooseType = (process: string, index: number) => {
     this.setState({
       isChooseTypeShow: true,
@@ -314,7 +304,7 @@ export default class InsuranceRequirementsFormScreen extends React.Component<any
         },
         {
           text: "OK",
-          onPress: () => this.props.navigation.push("InsuranceHomeScreen"),
+          onPress: () => router.push("Home/MainHome/Insurance/InsuranceFormsHomeScreen"),
         },
       ],
       { cancelable: false }
@@ -383,7 +373,8 @@ export default class InsuranceRequirementsFormScreen extends React.Component<any
           this.state.insuranceDetails == null || this.state.soc == null
             ?
             <View style={[globalStyle.wrapper, { flex: 1, justifyContent: 'center', alignItems: 'center' }]}>
-              <Text style={globalStyle.commonText}>Please Fill up the Product form and Financial Status Form first.</Text>
+              <Text style={[globalStyle.commonText, {marginBottom: 20}]}>Please Fill up the Financial Status Form first.</Text>
+              <BackBtn onPress={() => router.push('Home/MainHome/Insurance/InsuranceFormsHomeScreen')} />
             </View>
             :
             <View style={this.state.isLoaded == false ? { flex: 1, justifyContent: 'center', alignItems: 'center' } : null}>
@@ -436,7 +427,7 @@ export default class InsuranceRequirementsFormScreen extends React.Component<any
                       }
                       <View style={globalStyle.buttonHolder}>
                         <BackBtn
-                          onPress={() => this.state.step == 2 ? this.setState({ step: 1 }) : this.props.navigation.navigate("InsuranceHomeScreen")}
+                          onPress={() => this.state.step == 2 ? this.setState({ step: 1 }) : router.push("Home/MainHome//InsuranceFormsHomeScreen")}
                         />
                         <View style={globalStyle.horizontalSpacer}></View>
                         <SaveBtn

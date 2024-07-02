@@ -19,7 +19,6 @@ import { globalStyle } from "../../../../assets/styles/globalStyle";
 import {CancelBtn, BackBtn, NextBtn, SaveBtn} from "../../../../components/Buttons";
 import {RequirementsImagePicker} from "../../../../components/Inputs";
 import * as ImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
 
 
 export default class InsuranceProfileAttachmentFormScreen extends React.Component<any> {

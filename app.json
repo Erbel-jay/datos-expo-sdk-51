@@ -2,7 +2,7 @@
   "expo": {
     "name": "Datos",
     "slug": "Datos",
-    "version": "5.5",
+    "version": "6.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "com.datos.app",
@@ -16,7 +16,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/6cc3502e-dafa-474f-bea0-051818b5653a"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -24,12 +25,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.datos.app",
-      "buildNumber": "5.5",
-      "config": {
-        "googleSignIn": {
-          "reservedClientId": "com.googleusercontent.apps.333344526493-758rthpn9ucdmqquhf5g1184galaosvk"
-        }
-      },
+      "buildNumber": "6.0",
       "usesAppleSignIn": true,
       "infoPlist": {
         "CFBundleAllowMixedLocalizations": true,
@@ -37,9 +33,6 @@
         "NSPhotoLibraryUsageDescription": "We need to access your photos to be able to set your profile picture and upload requirements"
       }
     },
-    "facebookScheme": "fb225308005932859",
-    "facebookAppId": "225308005932859",
-    "facebookDisplayName": "ci-app",
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
@@ -59,15 +52,8 @@
       "blockedPermissions": [
         "android.permission.ACCESS_BACKGROUND_LOCATION"
       ],
-      "versionCode": 55,
-      "config": {
-        "googleSignIn": {
-          "certificateHash": "CF:9A:50:30:18:E9:CD:4A:5A:79:4F:85:DB:19:3E:E6:E0:41:99:CE",
-          "apiKey": "AIzaSyBDY41e9WxfPhEsY1c9qe9K6lTcwX5ngls"
-        }
-      },
-      "googleServicesFile": "./google-services.json",
-      "useNextNotificationsApi": true
+      "versionCode": 60,
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
@@ -77,8 +63,9 @@
         "projectId": "6cc3502e-dafa-474f-bea0-051818b5653a"
       }
     },
-    "plugins": [
-      
-    ]
+    "plugins": [],
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
   }
 }

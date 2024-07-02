@@ -73,6 +73,7 @@ export default class extends React.Component<any, any> {
           ),
         })}
       >
+
         <Drawer.Screen name="MainHome"  options={{
           drawerIcon: () => <Icon name="home" size={24} color={datosDarkGray}/>,
           title: 'Home',
@@ -83,7 +84,8 @@ export default class extends React.Component<any, any> {
             shadowOpacity: 0,
             height: 120
           }
-        }} />
+        }} 
+        />
   
         <Drawer.Screen name="Retailers" options={{
           drawerIcon: () => <Icon name="layers" size={24} color={datosDarkGray}/>,
