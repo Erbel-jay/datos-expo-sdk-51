@@ -154,7 +154,7 @@ class NoUserHomeScreen extends React.Component<NoUserHomeScreendProps> {
                 icon="online-payment-1"
                 iconBgColor="#2E2E2E"
                 cardName="Make a Payment"
-                onPress={() => this.props.navigation.navigate("OneTimePaymentStackNavigator")}
+                onPress={() => router.push("Home/MakeAPayment")}
               />
 
             </View>
@@ -332,7 +332,7 @@ class TwoTab extends React.Component<TwoTabProps> {
                     this.props.retailersMessages.map((data: any, i: any) => {
                       return (
                         <View style={{padding: 10}} key={i}>
-                          <NotifyBox key={i} data={data} navigation={this.props.navigation} activeTab={this.props.activeTab} />
+                          <NotifyBox key={i} data={data} navigation={router} activeTab={this.props.activeTab} />
                         </View>
                       );
                     })
@@ -351,7 +351,7 @@ class TwoTab extends React.Component<TwoTabProps> {
                 messageToSend={this.props.messageToSend}
                 onChangeMessage={this.props.onChangeMessage}
                 send={this.props.send}
-                navigation={this.props.navigation}
+                navigation={router}
               />
           }
         </View>
@@ -398,7 +398,7 @@ class ComposeMessage extends React.Component<ComposeMessageProps> {
           </ScrollView>
         </View>
         <View style={{alignItems: 'center', marginBottom: 30}}>
-          <BackBtn onPress={() => this.props.navigation.goBack()} />
+          <BackBtn onPress={() => this.props.navigation.back()} />
         </View>
       </View>
     )
@@ -418,8 +418,8 @@ class NotifyBox extends React.Component<NotifyBoxProps> {
         style={styles.notificationBox}
         key={this.props.data._id}
         onPress={() => this.props.activeTab == true ?
-          this.props.navigation.navigate('Message', {
-            screen: 'MessageContentScreen',
+          this.props.navigation.push({
+            pathname: 'Home/Messages/MessageContentScreen',
             params: {
               retailer_id: this.props.data.retailer._id,
               messager_name: this.props.data.retailer.name,
@@ -428,9 +428,7 @@ class NotifyBox extends React.Component<NotifyBoxProps> {
             }
           })
           :
-          this.props.navigation.navigate('ApplicationTrackerScreen', {
-            loanDisplayInfo: this.props.loanDisplayInfo
-          })
+          router.push('Home/MainHome')
         }
       >
         <Image
@@ -471,7 +469,7 @@ class EaMessageBox extends React.Component<EaMessageBoxProps> {
         style={styles.notificationBox}
         key={this.props.data._id}
         onPress={() => {
-          this.props.navigation.navigate('MessageStackNavigator' ,{screen: 'MessageContentScreen', params: { 
+          this.props.navigation.push({pathname: 'Home/Messages/MessageContentScreen', params: { 
             retailer_id: this.props.data.retailer._id,
             messager_name: this.props.data.retailer.name,
             retailer_laon_category: this.props.data.retailer.loan_category,

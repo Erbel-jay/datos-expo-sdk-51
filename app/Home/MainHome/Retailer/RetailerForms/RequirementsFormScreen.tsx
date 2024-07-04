@@ -413,7 +413,7 @@ class RequirementsFormScreenComponent extends React.Component<any, any> {
             ?
             <View style={[globalStyle.wrapper, { flex: 1, justifyContent: 'center', alignItems: 'center' }]}>
               <Text style={[globalStyle.commonText, {marginBottom: 20}]}>Please Fill up Financial Status Form first.</Text>
-              <BackBtn onPress={() => router.push('Home/MainHome/Retailer/FormsHomeScreen')} />
+              <BackBtn onPress={() => router.back()} />
             </View>
             :
             <View style={this.state.isLoaded == false ? { flex: 1, justifyContent: 'center', alignItems: 'center' } : null}>

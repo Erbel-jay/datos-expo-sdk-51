@@ -332,7 +332,7 @@ export default class MainHomeScreen extends React.Component<any, any> {
                       {
                         this.state.retailersMessages.length > 0 ?
                           this.state.retailersMessages.map((data: any,i: number) => {
-                            return <EaMessageBox key={i} data={data} navigation={this.props.navigation} />
+                            return <EaMessageBox key={i} data={data} navigation={router} />
                           })
                         : <Text style={{textAlign: 'center'}}>No Messages yet.</Text>
                       }
